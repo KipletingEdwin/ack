@@ -1,0 +1,7 @@
+{
+  "name": "ack",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
