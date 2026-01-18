@@ -28,3 +28,19 @@
       }
     }
   }
+
+
+//   ***********************************************************
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    ion-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #4b79a1;
+    }
+  }
+  

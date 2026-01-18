@@ -1,16 +1,16 @@
+
+
   <section class="ministries-preview">
     <h2>Our Ministries</h2>
-    <div class="grid"  >
-      <div class="card" routerLink="/main/ministries">
-        <h3>Youth Ministry</h3>
-      </div>
-
-      <div class="card" routerLink="/main/ministries">
-        <h3>Women’s Guild</h3>
-      </div>
-
-      <div class="card" routerLink="/main/ministries">
-        <h3>Men’s Fellowship</h3>
+    <div class="grid">
+      <div
+      class="card"
+      *ngFor="let ministry of ministries"
+      routerLink="ministry.route"
+      >
+      <ion-icon *ngIf="ministry.icon" [name]="ministry.icon"></ion-icon>
+      <h3>{{ministry.name}}</h3>
       </div>
     </div>
   </section>
+  
