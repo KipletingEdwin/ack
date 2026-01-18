@@ -1,0 +1,25 @@
+.hero {
+    background: url('/assets/hero.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  
+    .hero-content {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      border-radius: 10px;
+  
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+  
+      p {
+        margin-top: 10px;
+        font-size: 1.1rem;
+      }
+    }
+  }

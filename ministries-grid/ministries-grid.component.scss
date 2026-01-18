@@ -1,0 +1,30 @@
+.ministries-preview{
+  padding: 40px 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+}
+
+.ministries-preview .grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  
+    .card {
+      background: #f8f8f8;
+      padding: 20px;
+      width: 150px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.3s;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
