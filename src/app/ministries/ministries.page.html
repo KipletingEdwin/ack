@@ -1,0 +1,23 @@
+<ion-content fullscreen>
+
+  <!-- Hero -->
+  <section class="ministries-hero">
+    <h1>Our Ministries</h1>
+    <p>Discover the different ministries serving our church and community.</p>
+  </section>
+
+  <!-- Ministries Grid (data-driven) -->
+  <section class="ministries-section">
+    <div class="grid">
+      <div
+        class="card"
+        *ngFor="let ministry of ministries"
+      >
+        <ion-icon *ngIf="ministry.icon" [name]="ministry.icon"></ion-icon>
+        <h3>{{ ministry.name }}</h3>
+        <p>{{ ministry.description }}</p>
+      </div>
+    </div>
+  </section>
+
+</ion-content>
