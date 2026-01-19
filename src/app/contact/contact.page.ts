@@ -13,4 +13,14 @@ export class ContactPage implements OnInit {
   ngOnInit() {
   }
 
+  form = {
+    name: '',
+    email: '',
+    message: ''
+  };
+
+  submitForm(){
+    console.log('Form submitted:', this.form);
+    alert('Thank you for your message!');
+  }
 }
