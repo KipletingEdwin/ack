@@ -1,13 +1,65 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>contact</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">contact</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <section class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Reach out anytime.</p>
+  </section>
+
+  <section class="contact-info">
+    <h2>Get in Touch</h2>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <ion-icon name="location"></ion-icon>
+        <h3>Address</h3>
+        <p>ACK St James Koromosho<br />Nakuru, Kenya</p>
+      </div>
+
+      <div class="info-card">
+        <ion-icon name="call"></ion-icon>
+        <h3>Phone</h3>
+        <p>+254 700 000 000</p>
+      </div>
+
+      <div class="info-card">
+        <ion-icon name="mail"></ion-icon>
+        <h3>Email</h3>
+        <p>info@stjameskoromosho.org</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <h2>Send Us a Message</h2>
+
+    <form (submit)="submitForm()">
+      <ion-item>
+        <ion-label position="floating">Your Name</ion-label>
+        <ion-input [(ngModel)]="form.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="form.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Message</ion-label>
+        <ion-textarea [(ngModel)]="form.message" name="message"></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" color="primary" shape="round">
+        Send Message
+      </ion-button>
+    </form>
+  </section>
+
+  <section class="map">
+    <h2>Find Us</h2>
+    <div class="map-box">
+      <p>Map goes here</p>
+    </div>
+  </section>
+
 </ion-content>
+
