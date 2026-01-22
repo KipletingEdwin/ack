@@ -1,62 +1,248 @@
-<ion-content fullscreen>
+<ion-content fullscreen class="about-page">
 
-
+  <!-- Hero Section with Overlay -->
   <section class="about-hero">
-    <h1>About Us</h1>
-    <p>Learn more about our mission, vision, and community.</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">Welcome to Our Family</h1>
+      <p class="fade-in-delay">A community united in faith, hope, and love</p>
+      <ion-button class="cta-button" fill="outline" color="light">Join Us This Sunday</ion-button>
+    </div>
   </section>
 
-
-  <section class="mission">
-    <h2>Our Mission</h2>
-    <p>
-      To proclaim the Gospel of Christ, nurture spiritual growth, and serve our
-      community with love, compassion, and integrity.
-    </p>
-  </section>
-
-
-  <section class="vision">
-    <h2>Our Vision</h2>
-    <p>
-      To be a Christ‑centered church that transforms lives and impacts society
-      through worship, discipleship, and service.
-    </p>
-  </section>
-
-
-  <section class="leadership">
-    <h2>Church Leadership</h2>
-
-    <div class="leaders-grid">
-      <div class="leader-card">
-        <!-- <img src="assets/pastor.jpg" alt="Pastor" /> -->
-        <h3>Rev. John Doe</h3>
-        <p>Senior Pastor</p>
+  <!-- Quick Stats Section -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <ion-icon name="people-outline"></ion-icon>
+        <h3>500+</h3>
+        <p>Members</p>
       </div>
-
-      <div class="leader-card">
-        <!-- <img src="assets/assistant.jpg" alt="Assistant Pastor" /> -->
-        <h3>Mary Wanjiku</h3>
-        <p>Assistant Pastor</p>
+      <div class="stat-item">
+        <ion-icon name="heart-outline"></ion-icon>
+        <h3>25+</h3>
+        <p>Years Serving</p>
       </div>
-
-      <div class="leader-card">
-        <!-- <img src="assets/elder.jpg" alt="Elder" /> -->
-        <h3>Peter Kiptoo</h3>
-        <p>Church Elder</p>
+      <div class="stat-item">
+        <ion-icon name="hand-left-outline"></ion-icon>
+        <h3>15+</h3>
+        <p>Ministries</p>
+      </div>
+      <div class="stat-item">
+        <ion-icon name="home-outline"></ion-icon>
+        <h3>1</h3>
+        <p>Faith Family</p>
       </div>
     </div>
   </section>
 
+  <!-- Mission & Vision Cards -->
+  <section class="mission-vision-section">
+    <div class="container">
+      <div class="mission-vision-grid">
+        
+        <div class="mv-card mission-card">
+          <div class="icon-wrapper">
+            <ion-icon name="compass-outline"></ion-icon>
+          </div>
+          <h2>Our Mission</h2>
+          <p>
+            To proclaim the Gospel of Christ, nurture spiritual growth, and serve our
+            community with love, compassion, and integrity. We are committed to making
+            disciples who make a difference in Nakuru and beyond.
+          </p>
+        </div>
 
-  <section class="history">
-    <h2>Our Story</h2>
-    <p>
-      ACK St James Koromosho has been a pillar of faith in the Nakuru community
-      for many years. From humble beginnings, the church has grown into a vibrant
-      congregation committed to worship, fellowship, and service.
-    </p>
+        <div class="mv-card vision-card">
+          <div class="icon-wrapper">
+            <ion-icon name="eye-outline"></ion-icon>
+          </div>
+          <h2>Our Vision</h2>
+          <p>
+            To be a Christ-centered church that transforms lives and impacts society
+            through worship, discipleship, and service. We envision a community where
+            every person experiences God's love and discovers their purpose.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <h2 class="section-title">Our Core Values</h2>
+      <div class="values-grid">
+        
+        <div class="value-item">
+          <ion-icon name="book-outline"></ion-icon>
+          <h3>Biblical Truth</h3>
+          <p>Grounded in God's Word</p>
+        </div>
+
+        <div class="value-item">
+          <ion-icon name="people-outline"></ion-icon>
+          <h3>Community</h3>
+          <p>Growing together in faith</p>
+        </div>
+
+        <div class="value-item">
+          <ion-icon name="heart-outline"></ion-icon>
+          <h3>Compassion</h3>
+          <p>Serving with Christ's love</p>
+        </div>
+
+        <div class="value-item">
+          <ion-icon name="shield-outline"></ion-icon>
+          <h3>Integrity</h3>
+          <p>Living authentically</p>
+        </div>
+
+        <div class="value-item">
+          <ion-icon name="bulb-outline"></ion-icon>
+          <h3>Excellence</h3>
+          <p>Honoring God in all we do</p>
+        </div>
+
+        <div class="value-item">
+          <ion-icon name="globe-outline"></ion-icon>
+          <h3>Outreach</h3>
+          <p>Sharing the Gospel globally</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="leadership-section">
+    <div class="container">
+      <h2 class="section-title">Meet Our Leadership</h2>
+      <p class="section-subtitle">Shepherds called to serve and guide our congregation</p>
+      
+      <div class="leaders-grid">
+        
+        <div class="leader-card">
+          <div class="leader-image">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <!-- Replace with: <img src="assets/pastor.jpg" alt="Rev. John Doe" /> -->
+          </div>
+          <div class="leader-info">
+            <h3>Rev. John Doe</h3>
+            <p class="title">Senior Pastor</p>
+            <p class="bio">Leading our congregation with wisdom and grace for over 15 years.</p>
+            <div class="leader-contact">
+              <ion-icon name="mail-outline"></ion-icon>
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-image">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <!-- Replace with: <img src="assets/assistant.jpg" alt="Mary Wanjiku" /> -->
+          </div>
+          <div class="leader-info">
+            <h3>Mary Wanjiku</h3>
+            <p class="title">Assistant Pastor</p>
+            <p class="bio">Passionate about youth ministry and community outreach programs.</p>
+            <div class="leader-contact">
+              <ion-icon name="mail-outline"></ion-icon>
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-image">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <!-- Replace with: <img src="assets/elder.jpg" alt="Peter Kiptoo" /> -->
+          </div>
+          <div class="leader-info">
+            <h3>Peter Kiptoo</h3>
+            <p class="title">Church Elder</p>
+            <p class="bio">Committed to prayer, discipleship, and spiritual mentorship.</p>
+            <div class="leader-contact">
+              <ion-icon name="mail-outline"></ion-icon>
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- History/Story Section -->
+  <section class="history-section">
+    <div class="container">
+      <div class="history-content">
+        <div class="history-text">
+          <h2>Our Story</h2>
+          <p class="lead">A Journey of Faith</p>
+          <p>
+            ACK St James Koromosho has been a pillar of faith in the Nakuru community
+            for over 25 years. What began as a small gathering of believers has grown
+            into a vibrant congregation of over 500 members.
+          </p>
+          <p>
+            From humble beginnings in a rented hall, God has blessed us with a beautiful
+            sanctuary and facilities that serve our community. We've witnessed countless
+            lives transformed, families restored, and hearts renewed through the power
+            of the Gospel.
+          </p>
+          <p>
+            Today, we continue to grow in faith, reaching out to our neighbors with the
+            love of Christ, and preparing the next generation to carry the torch of faith
+            into the future.
+          </p>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="year">1998</div>
+              <div class="event">Church Founded</div>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2005</div>
+              <div class="event">New Sanctuary Built</div>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2015</div>
+              <div class="event">Community Center Opened</div>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2025</div>
+              <div class="event">Growing Strong</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="history-image">
+          <ion-icon name="church-outline"></ion-icon>
+          <!-- Replace with: <img src="assets/church-building.jpg" alt="Church Building" /> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Join Our Family</h2>
+      <p>Experience the warmth of Christian fellowship and grow in your faith journey</p>
+      <div class="cta-buttons">
+        <ion-button color="primary" size="large" routerLink="/main/contact">
+          <ion-icon slot="start" name="location-outline"></ion-icon>
+          Visit Us
+        </ion-button>
+        <ion-button fill="outline" color="primary" size="large">
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          View Events
+        </ion-button>
+      </div>
+    </div>
   </section>
 
 </ion-content>
