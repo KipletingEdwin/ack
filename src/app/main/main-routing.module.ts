@@ -33,7 +33,7 @@ const routes: Routes = [
           import('../sermons/sermons.module').then(m => m.SermonsPageModule)
       },
       {
-        path: 'main/contact',
+        path: 'contact',
         loadChildren: () =>
           import('../contact/contact.module').then(m => m.ContactPageModule)
       }
