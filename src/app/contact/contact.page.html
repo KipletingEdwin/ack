@@ -1,65 +1,291 @@
-<ion-content fullscreen>
+<ion-content fullscreen class="contact-page">
 
+  <!-- Hero Section -->
   <section class="contact-hero">
-    <h1>Contact Us</h1>
-    <p>We’d love to hear from you. Reach out anytime.</p>
-  </section>
-
-  <section class="contact-info">
-    <h2>Get in Touch</h2>
-
-    <div class="info-grid">
-      <div class="info-card">
-        <ion-icon name="location"></ion-icon>
-        <h3>Address</h3>
-        <p>ACK St James Koromosho<br />Nakuru, Kenya</p>
-      </div>
-
-      <div class="info-card">
-        <ion-icon name="call"></ion-icon>
-        <h3>Phone</h3>
-        <p>+254 700 000 000</p>
-      </div>
-
-      <div class="info-card">
-        <ion-icon name="mail"></ion-icon>
-        <h3>Email</h3>
-        <p>info@stjameskoromosho.org</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">Get in Touch</h1>
+      <p class="fade-in-delay">We're here to serve you and answer your questions</p>
+      <div class="hero-icons fade-in-delay-2">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-icon name="mail-outline"></ion-icon>
       </div>
     </div>
   </section>
 
-  <section class="contact-form">
-    <h2>Send Us a Message</h2>
+  <!-- Quick Contact Cards -->
+  <section class="quick-contact-section">
+    <div class="container">
+      <div class="contact-cards-grid">
+        
+        <div class="contact-card">
+          <div class="icon-wrapper">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          <h3>Visit Us</h3>
+          <p class="main-info">ACK St James Koromosho</p>
+          <p class="sub-info">Nakuru, Kenya</p>
+          <ion-button fill="clear" color="primary" size="small">
+            <ion-icon slot="start" name="navigate-outline"></ion-icon>
+            Get Directions
+          </ion-button>
+        </div>
 
-    <form (submit)="submitForm()">
-      <ion-item>
-        <ion-label position="floating">Your Name</ion-label>
-        <ion-input [(ngModel)]="form.name" name="name"></ion-input>
-      </ion-item>
+        <div class="contact-card">
+          <div class="icon-wrapper">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+          <h3>Call Us</h3>
+          <p class="main-info">+254 700 000 000</p>
+          <p class="sub-info">Mon - Fri, 9 AM - 5 PM</p>
+          <ion-button fill="clear" color="primary" size="small" href="tel:+254700000000">
+            <ion-icon slot="start" name="call-outline"></ion-icon>
+            Call Now
+          </ion-button>
+        </div>
 
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input [(ngModel)]="form.email" name="email"></ion-input>
-      </ion-item>
+        <div class="contact-card">
+          <div class="icon-wrapper">
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          <h3>Email Us</h3>
+          <p class="main-info">info@stjameskoromosho.org</p>
+          <p class="sub-info">We respond within 24 hours</p>
+          <ion-button fill="clear" color="primary" size="small" href="mailto:info@stjameskoromosho.org">
+            <ion-icon slot="start" name="send-outline"></ion-icon>
+            Send Email
+          </ion-button>
+        </div>
 
-      <ion-item>
-        <ion-label position="floating">Message</ion-label>
-        <ion-textarea [(ngModel)]="form.message" name="message"></ion-textarea>
-      </ion-item>
+        <div class="contact-card">
+          <div class="icon-wrapper">
+            <ion-icon name="time-outline"></ion-icon>
+          </div>
+          <h3>Service Times</h3>
+          <p class="main-info">Sunday Services</p>
+          <p class="sub-info">8:00 AM & 10:30 AM</p>
+          <ion-button fill="clear" color="primary" size="small">
+            <ion-icon slot="start" name="calendar-outline"></ion-icon>
+            View Schedule
+          </ion-button>
+        </div>
 
-      <ion-button expand="block" type="submit" color="primary" shape="round">
-        Send Message
-      </ion-button>
-    </form>
+      </div>
+    </div>
   </section>
 
-  <section class="map">
-    <h2>Find Us</h2>
-    <div class="map-box">
-      <p>Map goes here</p>
+  <!-- Contact Form Section -->
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        
+        <div class="form-header">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+          <h2>Send Us a Message</h2>
+          <p>Have a question or prayer request? We'd love to hear from you!</p>
+        </div>
+
+        <form #contactForm="ngForm" (submit)="submitForm(contactForm)">
+          
+          <div class="form-row">
+            <ion-item class="form-item">
+              <ion-label position="floating">Your Name *</ion-label>
+              <ion-input 
+                [(ngModel)]="form.name" 
+                name="name" 
+                type="text"
+                required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label position="floating">Email Address *</ion-label>
+              <ion-input 
+                [(ngModel)]="form.email" 
+                name="email" 
+                type="email"
+                required>
+              </ion-input>
+            </ion-item>
+          </div>
+
+          <div class="form-row">
+            <ion-item class="form-item">
+              <ion-label position="floating">Phone Number</ion-label>
+              <ion-input 
+                [(ngModel)]="form.phone" 
+                name="phone" 
+                type="tel">
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label position="floating">Subject</ion-label>
+              <ion-select 
+                [(ngModel)]="form.subject" 
+                name="subject"
+                interface="popover">
+                <ion-select-option value="general">General Inquiry</ion-select-option>
+                <ion-select-option value="prayer">Prayer Request</ion-select-option>
+                <ion-select-option value="ministry">Ministry Information</ion-select-option>
+                <ion-select-option value="partnership">Partnership</ion-select-option>
+                <ion-select-option value="visit">Planning a Visit</ion-select-option>
+                <ion-select-option value="other">Other</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <ion-item class="form-item full-width">
+            <ion-label position="floating">Your Message *</ion-label>
+            <ion-textarea 
+              [(ngModel)]="form.message" 
+              name="message"
+              rows="6"
+              required>
+            </ion-textarea>
+          </ion-item>
+
+          <div class="form-actions">
+            <ion-button 
+              expand="block" 
+              type="submit" 
+              color="primary" 
+              size="large"
+              [disabled]="!contactForm.valid || isSubmitting">
+              <ion-icon slot="start" name="send-outline"></ion-icon>
+              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            </ion-button>
+          </div>
+
+          <p class="form-note">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            Your information is safe with us and will never be shared.
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-header">
+        <h2>Find Us on the Map</h2>
+        <p>Located in the heart of Nakuru, we're easy to find and accessible</p>
+      </div>
+
+      <div class="map-container">
+        <!-- Google Maps Embed - Replace with your actual church location -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.234567890123!2d36.0670583!3d-0.3030988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMTgnMTEuMiJTIDM2wrAwNCcwMS40IkU!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske"
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <!-- Alternative: If you prefer a static map placeholder -->
+        <!-- <div class="map-placeholder">
+          <ion-icon name="map-outline"></ion-icon>
+          <p>Interactive Map</p>
+          <ion-button color="primary">Open in Google Maps</ion-button>
+        </div> -->
+      </div>
+
+      <div class="directions-info">
+        <h3>Directions & Landmarks</h3>
+        <ul>
+          <li>
+            <ion-icon name="car-outline"></ion-icon>
+            <span>By Car: Take the Nakuru-Eldoret Highway, turn at Koromosho Junction</span>
+          </li>
+          <li>
+            <ion-icon name="bus-outline"></ion-icon>
+            <span>By Public Transport: Matatus heading to Koromosho area</span>
+          </li>
+          <li>
+            <ion-icon name="navigate-outline"></ion-icon>
+            <span>Landmark: Near Koromosho Primary School</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Contact Options -->
+  <section class="social-section">
+    <div class="container">
+      <h2>Connect With Us</h2>
+      <p class="section-subtitle">Follow our journey and stay connected on social media</p>
+      
+      <div class="social-icons">
+        <a href="#" class="social-link facebook">
+          <ion-icon name="logo-facebook"></ion-icon>
+          <span>Facebook</span>
+        </a>
+        <a href="#" class="social-link twitter">
+          <ion-icon name="logo-twitter"></ion-icon>
+          <span>Twitter</span>
+        </a>
+        <a href="#" class="social-link instagram">
+          <ion-icon name="logo-instagram"></ion-icon>
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="social-link youtube">
+          <ion-icon name="logo-youtube"></ion-icon>
+          <span>YouTube</span>
+        </a>
+        <a href="#" class="social-link whatsapp">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Hours -->
+  <section class="hours-section">
+    <div class="container">
+      <div class="hours-content">
+        <div class="hours-text">
+          <h2>Office Hours</h2>
+          <p>Our church office is open to serve you during the following hours:</p>
+          
+          <div class="hours-list">
+            <div class="hours-item">
+              <div class="day">Monday - Friday</div>
+              <div class="time">9:00 AM - 5:00 PM</div>
+            </div>
+            <div class="hours-item">
+              <div class="day">Saturday</div>
+              <div class="time">10:00 AM - 2:00 PM</div>
+            </div>
+            <div class="hours-item closed">
+              <div class="day">Sunday</div>
+              <div class="time">Worship Services Only</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="emergency-contact">
+          <div class="emergency-icon">
+            <ion-icon name="medical-outline"></ion-icon>
+          </div>
+          <h3>Emergency Contact</h3>
+          <p>For urgent pastoral care or emergencies:</p>
+          <a href="tel:+254700000000" class="emergency-number">
+            <ion-icon name="call-outline"></ion-icon>
+            +254 700 000 000
+          </a>
+          <p class="emergency-note">Available 24/7 for emergencies</p>
+        </div>
+      </div>
     </div>
   </section>
 
 </ion-content>
-
