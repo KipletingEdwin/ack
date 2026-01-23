@@ -1,0 +1,533 @@
+.ministries-page {
+  --background: #f8f9fa;
+}
+
+/* ===== HERO SECTION ===== */
+.ministries-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 350px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  //background-image: url('assets/ministries-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.88) 0%, rgba(118, 75, 162, 0.88) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 800px;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.fade-in-delay {
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== INTRO SECTION ===== */
+.intro-section {
+  padding: 4rem 0;
+  background: white;
+
+  .intro-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+    ion-icon {
+      font-size: 4rem;
+      color: #667eea;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    ion-button {
+      font-weight: 600;
+      --border-width: 2px;
+      
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* ===== MINISTRIES GRID ===== */
+.ministries-section {
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+
+  .ministries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ministry-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    &.featured {
+      border: 2px solid #ffd700;
+      
+      .featured-badge {
+        display: flex;
+      }
+    }
+
+    .card-header {
+      height: 180px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      .icon-wrapper {
+        position: relative;
+        z-index: 1;
+
+        ion-icon {
+          font-size: 5rem;
+          color: white;
+          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+          transition: transform 0.3s ease;
+        }
+      }
+
+      &:hover .icon-wrapper ion-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .description {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .ministry-details {
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+
+        .detail-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.7rem;
+          color: #555;
+          font-size: 0.9rem;
+
+          ion-icon {
+            color: #667eea;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .card-actions {
+        ion-button {
+          font-weight: 600;
+          --ripple-color: rgba(102, 126, 234, 0.2);
+
+          ion-icon {
+            transition: transform 0.3s ease;
+          }
+
+          &:hover ion-icon {
+            transform: translateX(5px);
+          }
+        }
+      }
+    }
+
+    .featured-badge {
+      display: none;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #ffd700;
+      color: #333;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+      z-index: 10;
+
+      ion-icon {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ===== CATEGORIES SECTION ===== */
+.categories-section {
+  padding: 4rem 0;
+  background: white;
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .category-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 15px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+      background: white;
+      border-color: #667eea;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+      ion-icon {
+        transform: scale(1.2);
+        color: #764ba2;
+      }
+    }
+
+    ion-icon {
+      font-size: 3.5rem;
+      color: #667eea;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+/* ===== JOIN SECTION ===== */
+.join-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+  }
+
+  .join-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+
+    ion-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .join-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      ion-button {
+        font-weight: 600;
+        --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+          transform: translateY(-3px);
+          --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+.testimonials-section {
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+
+  .section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .quote-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+
+      ion-icon {
+        font-size: 1.8rem;
+        color: white;
+      }
+    }
+
+    .testimonial-text {
+      color: #555;
+      line-height: 1.8;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-top: 1rem;
+      border-top: 2px solid #f0f0f0;
+
+      strong {
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      span {
+        color: #667eea;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+  }
+}
