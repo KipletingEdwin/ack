@@ -1,21 +1,191 @@
-<ion-content fullscreen>
+<ion-content fullscreen class="ministries-page">
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="ministries-hero">
-    <h1>Our Ministries</h1>
-    <p>Discover the different ministries serving our church and community.</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">Our Ministries</h1>
+      <p class="fade-in-delay">Serving God through diverse gifts and calling</p>
+      <p class="subtitle fade-in-delay-2">Find your place to serve and grow in faith</p>
+    </div>
   </section>
 
-  <!-- Ministries Grid (data-driven) -->
+  <!-- Introduction Section -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-content">
+        <ion-icon name="heart-outline"></ion-icon>
+        <h2>Every Member a Minister</h2>
+        <p>
+          At ACK St James Koromosho, we believe every person has unique gifts and talents 
+          to contribute to God's kingdom. Our ministries provide opportunities for you to 
+          serve, grow, and make a meaningful impact in our church and community.
+        </p>
+        <ion-button color="primary" fill="outline">
+          <ion-icon slot="start" name="hand-right-outline"></ion-icon>
+          Get Involved
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ministries Grid -->
   <section class="ministries-section">
-    <div class="grid">
-      <div
-        class="card"
-        *ngFor="let ministry of ministries"
-      >
-        <ion-icon *ngIf="ministry.icon" [name]="ministry.icon"></ion-icon>
-        <h3>{{ ministry.name }}</h3>
-        <p>{{ ministry.description }}</p>
+    <div class="container">
+      <div class="ministries-grid">
+        <div
+          class="ministry-card"
+          *ngFor="let ministry of ministries; let i = index"
+          [class.featured]="ministry.featured"
+        >
+          <div class="card-header" [style.background]="ministry.color || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
+            <div class="icon-wrapper">
+              <ion-icon [name]="ministry.icon"></ion-icon>
+            </div>
+          </div>
+          
+          <div class="card-body">
+            <h3>{{ ministry.name }}</h3>
+            <p class="description">{{ ministry.description }}</p>
+            
+            <div class="ministry-details">
+              <div class="detail-item" *ngIf="ministry.leader">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>{{ ministry.leader }}</span>
+              </div>
+              <div class="detail-item" *ngIf="ministry.schedule">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{ ministry.schedule }}</span>
+              </div>
+              <div class="detail-item" *ngIf="ministry.members">
+                <ion-icon name="people-outline"></ion-icon>
+                <span>{{ ministry.members }} members</span>
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <ion-button expand="block" fill="clear" color="primary">
+                Learn More
+                <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+
+          <div class="featured-badge" *ngIf="ministry.featured">
+            <ion-icon name="star"></ion-icon>
+            Featured
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section (Optional grouping) -->
+  <section class="categories-section">
+    <div class="container">
+      <h2 class="section-title">Ministry Categories</h2>
+      <div class="categories-grid">
+        
+        <div class="category-card">
+          <ion-icon name="people-outline"></ion-icon>
+          <h3>Age-Based</h3>
+          <p>Children, Youth, Young Adults, Seniors</p>
+        </div>
+
+        <div class="category-card">
+          <ion-icon name="musical-notes-outline"></ion-icon>
+          <h3>Worship & Arts</h3>
+          <p>Choir, Music, Drama, Creative Arts</p>
+        </div>
+
+        <div class="category-card">
+          <ion-icon name="hand-left-outline"></ion-icon>
+          <h3>Outreach</h3>
+          <p>Community Service, Missions, Evangelism</p>
+        </div>
+
+        <div class="category-card">
+          <ion-icon name="book-outline"></ion-icon>
+          <h3>Teaching</h3>
+          <p>Bible Study, Sunday School, Discipleship</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Join CTA Section -->
+  <section class="join-section">
+    <div class="join-content">
+      <ion-icon name="heart-circle-outline"></ion-icon>
+      <h2>Ready to Serve?</h2>
+      <p>
+        Whether you're new to church or have been with us for years, there's a 
+        place for you to use your gifts and make a difference.
+      </p>
+      <div class="join-buttons">
+        <ion-button color="light" size="large">
+          <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+          Contact Ministry Leader
+        </ion-button>
+        <ion-button fill="outline" color="light" size="large">
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          View Schedule
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials (Optional) -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">Ministry Impact</h2>
+      <p class="section-subtitle">Hear from those serving in our ministries</p>
+      
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card">
+          <div class="quote-icon">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </div>
+          <p class="testimonial-text">
+            "Serving in the youth ministry has transformed my faith. Watching young 
+            people grow in Christ is the most rewarding experience."
+          </p>
+          <div class="testimonial-author">
+            <strong>Sarah M.</strong>
+            <span>Youth Ministry Volunteer</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-icon">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </div>
+          <p class="testimonial-text">
+            "The choir ministry gave me a place to worship through my passion for 
+            music. I've found my spiritual family here."
+          </p>
+          <div class="testimonial-author">
+            <strong>David K.</strong>
+            <span>Choir Member</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-icon">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </div>
+          <p class="testimonial-text">
+            "Women's Guild has been a source of strength and sisterhood. Together 
+            we pray, serve, and support one another in faith."
+          </p>
+          <div class="testimonial-author">
+            <strong>Grace W.</strong>
+            <span>Women's Guild Member</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
