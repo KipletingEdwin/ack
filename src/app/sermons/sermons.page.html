@@ -1,13 +1,272 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>sermons</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen class="sermons-page">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">sermons</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Hero Section -->
+  <section class="sermons-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">Sermon Library</h1>
+      <p class="fade-in-delay">Be encouraged, inspired, and challenged by God's Word</p>
+      <div class="hero-stats fade-in-delay-2">
+        <div class="stat">
+          <ion-icon name="albums-outline"></ion-icon>
+          <span>200+ Sermons</span>
+        </div>
+        <div class="stat">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span>5+ Years</span>
+        </div>
+        <div class="stat">
+          <ion-icon name="people-outline"></ion-icon>
+          <span>10K+ Views</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search & Filter Bar -->
+  <section class="search-filter-section">
+    <div class="container">
+      <div class="search-filter-wrapper">
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <ion-searchbar
+            [(ngModel)]="searchTerm"
+            (ionInput)="filterSermons()"
+            placeholder="Search sermons, speakers, or topics..."
+            animated>
+          </ion-searchbar>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="filter-options">
+          <ion-segment [(ngModel)]="selectedFilter" (ionChange)="filterSermons()">
+            <ion-segment-button value="all">
+              <ion-label>All Sermons</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="series">
+              <ion-label>Series</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="speaker">
+              <ion-label>By Speaker</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="topic">
+              <ion-label>By Topic</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="sort-dropdown">
+          <ion-select [(ngModel)]="sortBy" (ionChange)="sortSermons()" interface="popover">
+            <ion-select-option value="newest">Newest First</ion-select-option>
+            <ion-select-option value="oldest">Oldest First</ion-select-option>
+            <ion-select-option value="popular">Most Popular</ion-select-option>
+            <ion-select-option value="title">Title (A-Z)</ion-select-option>
+          </ion-select>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Sermon -->
+  <section class="featured-sermon-section" *ngIf="featuredSermon">
+    <div class="container">
+      <div class="featured-label">
+        <ion-icon name="star"></ion-icon>
+        Featured Message
+      </div>
+
+      <div class="featured-sermon-card">
+        <div class="featured-media">
+          <img [src]="featuredSermon.thumbnail || 'assets/sermon-default.jpg'" [alt]="featuredSermon.title">
+          <div class="media-overlay">
+            <ion-button size="large" color="light" (click)="playSermon(featuredSermon)">
+              <ion-icon slot="start" name="play"></ion-icon>
+              Watch Now
+            </ion-button>
+          </div>
+          <div class="duration-badge">{{ featuredSermon.duration }} min</div>
+        </div>
+
+        <div class="featured-content">
+          <div class="featured-meta">
+            <span class="date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              {{ featuredSermon.date | date: 'MMMM d, yyyy' }}
+            </span>
+            <span class="series" *ngIf="featuredSermon.series">
+              <ion-icon name="bookmark-outline"></ion-icon>
+              {{ featuredSermon.series }}
+            </span>
+          </div>
+
+          <h2>{{ featuredSermon.title }}</h2>
+          <p class="description">{{ featuredSermon.description }}</p>
+
+          <div class="speaker-info">
+            <div class="speaker-avatar">
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </div>
+            <div>
+              <div class="speaker-name">{{ featuredSermon.speaker }}</div>
+              <div class="speaker-title">{{ featuredSermon.speakerTitle }}</div>
+            </div>
+          </div>
+
+          <div class="scripture" *ngIf="featuredSermon.scripture">
+            <ion-icon name="book-outline"></ion-icon>
+            {{ featuredSermon.scripture }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sermon Series (if series filter selected) -->
+  <section class="sermon-series-section" *ngIf="selectedFilter === 'series'">
+    <div class="container">
+      <h2>Sermon Series</h2>
+      
+      <div class="series-grid">
+        <div class="series-card" *ngFor="let series of sermonSeries">
+          <div class="series-image">
+            <img [src]="series.image || 'assets/series-default.jpg'" [alt]="series.name">
+            <div class="series-overlay">
+              <div class="series-count">{{ series.sermonCount }} Messages</div>
+            </div>
+          </div>
+          <div class="series-content">
+            <h3>{{ series.name }}</h3>
+            <p>{{ series.description }}</p>
+            <div class="series-meta">
+              <span>
+                <ion-icon name="calendar-outline"></ion-icon>
+                {{ series.startDate | date: 'MMM yyyy' }}
+              </span>
+              <span>
+                <ion-icon name="person-outline"></ion-icon>
+                {{ series.speaker }}
+              </span>
+            </div>
+            <ion-button expand="block" fill="outline" color="primary">
+              View Series
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sermons Grid -->
+  <section class="sermons-grid-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>{{ getSectionTitle() }}</h2>
+        <p>{{ filteredSermons.length }} sermon(s) found</p>
+      </div>
+
+      <!-- No Results -->
+      <div class="no-results" *ngIf="filteredSermons.length === 0">
+        <ion-icon name="search-outline"></ion-icon>
+        <h3>No sermons found</h3>
+        <p>Try adjusting your search or filters</p>
+        <ion-button color="primary" (click)="clearFilters()">
+          Clear Filters
+        </ion-button>
+      </div>
+
+      <!-- Sermons Grid -->
+      <div class="sermons-grid" *ngIf="filteredSermons.length > 0">
+        <div class="sermon-card" *ngFor="let sermon of filteredSermons" (click)="playSermon(sermon)">
+          
+          <div class="sermon-thumbnail">
+            <img [src]="sermon.thumbnail || 'assets/sermon-default.jpg'" [alt]="sermon.title">
+            <div class="thumbnail-overlay">
+              <ion-icon name="play-circle"></ion-icon>
+            </div>
+            <div class="duration-badge">{{ sermon.duration }} min</div>
+            <div class="new-badge" *ngIf="isNew(sermon.date)">NEW</div>
+          </div>
+
+          <div class="sermon-content">
+            <div class="sermon-meta">
+              <span class="date">{{ sermon.date | date: 'MMM d, yyyy' }}</span>
+              <span class="series" *ngIf="sermon.series">{{ sermon.series }}</span>
+            </div>
+
+            <h3>{{ sermon.title }}</h3>
+
+            <div class="speaker">
+              <ion-icon name="person-outline"></ion-icon>
+              <span>{{ sermon.speaker }}</span>
+            </div>
+
+            <p class="excerpt" *ngIf="sermon.description">
+              {{ sermon.description | slice:0:100 }}{{ sermon.description.length > 100 ? '...' : '' }}
+            </p>
+
+            <div class="sermon-actions">
+              <ion-button fill="clear" size="small" color="primary">
+                <ion-icon slot="start" name="play-outline"></ion-icon>
+                Watch
+              </ion-button>
+              <ion-button fill="clear" size="small" color="primary" (click)="downloadSermon($event, sermon)">
+                <ion-icon slot="icon-only" name="download-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" size="small" color="primary" (click)="shareSermon($event, sermon)">
+                <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more" *ngIf="hasMoreSermons">
+        <ion-button size="large" fill="outline" color="primary" (click)="loadMoreSermons()">
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          Load More Sermons
+        </ion-button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Topics/Categories Section -->
+  <section class="topics-section">
+    <div class="container">
+      <h2>Browse by Topic</h2>
+      
+      <div class="topics-grid">
+        <div class="topic-tag" *ngFor="let topic of topics" (click)="filterByTopic(topic)">
+          <ion-icon [name]="topic.icon"></ion-icon>
+          <span>{{ topic.name }}</span>
+          <div class="topic-count">{{ topic.count }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="sermons-cta">
+    <div class="cta-content">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <h2>Never Miss a Message</h2>
+      <p>Subscribe to get notified when new sermons are available</p>
+      <div class="cta-buttons">
+        <ion-button color="light" size="large">
+          <ion-icon slot="start" name="mail-outline"></ion-icon>
+          Subscribe via Email
+        </ion-button>
+        <ion-button fill="outline" color="light" size="large">
+          <ion-icon slot="start" name="logo-youtube"></ion-icon>
+          YouTube Channel
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
 </ion-content>

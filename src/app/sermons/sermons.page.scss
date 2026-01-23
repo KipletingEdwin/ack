@@ -1,0 +1,791 @@
+.sermons-page {
+    --background: #f8f9fa;
+  }
+  
+  /* ===== HERO SECTION ===== */
+  .sermons-hero {
+    position: relative;
+    height: 45vh;
+    min-height: 350px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    //background-image: url('assets/sermons-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    }
+  
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+  
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
+        }
+      }
+  
+      p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+  
+      .hero-stats {
+        display: flex;
+        gap: 3rem;
+        justify-content: center;
+  
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+  
+        .stat {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+  
+          ion-icon {
+            font-size: 2rem;
+            opacity: 0.9;
+          }
+  
+          span {
+            font-size: 1.1rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+  }
+  
+  .fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s backwards;
+  }
+  
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* ===== SEARCH & FILTER SECTION ===== */
+  .search-filter-section {
+    padding: 2rem 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  
+    .search-filter-wrapper {
+      display: grid;
+      grid-template-columns: 2fr 3fr 1fr;
+      gap: 1rem;
+      align-items: center;
+  
+      @media (max-width: 968px) {
+        grid-template-columns: 1fr;
+      }
+  
+      .search-bar {
+        ion-searchbar {
+          --background: #f8f9fa;
+          --border-radius: 12px;
+          --box-shadow: none;
+        }
+      }
+  
+      .filter-options {
+        ion-segment {
+          --background: #f8f9fa;
+  
+          ion-segment-button {
+            --indicator-color: #667eea;
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .sort-dropdown {
+        ion-select {
+          --background: #f8f9fa;
+          --padding-start: 1rem;
+          --padding-end: 1rem;
+          border-radius: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  
+  /* ===== FEATURED SERMON SECTION ===== */
+  .featured-sermon-section {
+    padding: 4rem 0;
+    background: white;
+  
+    .featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffd700;
+      color: #333;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  
+      ion-icon {
+        font-size: 1.2rem;
+      }
+    }
+  
+    .featured-sermon-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  
+      @media (max-width: 968px) {
+        grid-template-columns: 1fr;
+      }
+  
+      .featured-media {
+        position: relative;
+        height: 500px;
+        background: #000;
+  
+        @media (max-width: 968px) {
+          height: 350px;
+        }
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+  
+        .media-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+  
+          ion-button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+          }
+        }
+  
+        &:hover .media-overlay {
+          opacity: 1;
+  
+          ion-button {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+  
+        .duration-badge {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.95rem;
+        }
+      }
+  
+      .featured-content {
+        padding: 3rem;
+  
+        @media (max-width: 768px) {
+          padding: 2rem;
+        }
+  
+        .featured-meta {
+          display: flex;
+          gap: 1.5rem;
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 2px solid #f0f0f0;
+  
+          span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+  
+            ion-icon {
+              color: #667eea;
+            }
+          }
+  
+          .series {
+            color: #667eea;
+            font-weight: 600;
+          }
+        }
+  
+        h2 {
+          font-size: 2.2rem;
+          color: #333;
+          margin-bottom: 1rem;
+          font-weight: 700;
+          line-height: 1.3;
+  
+          @media (max-width: 768px) {
+            font-size: 1.8rem;
+          }
+        }
+  
+        .description {
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+          font-size: 1.05rem;
+        }
+  
+        .speaker-info {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background: #f8f9fa;
+          border-radius: 12px;
+          margin-bottom: 1.5rem;
+  
+          .speaker-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+  
+            ion-icon {
+              font-size: 3rem;
+              color: white;
+            }
+          }
+  
+          .speaker-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+          }
+  
+          .speaker-title {
+            font-size: 0.9rem;
+            color: #666;
+          }
+        }
+  
+        .scripture {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          border-left: 4px solid #667eea;
+          font-weight: 600;
+          color: #667eea;
+          font-size: 1.05rem;
+  
+          ion-icon {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+  
+  /* ===== SERMON SERIES SECTION ===== */
+  .sermon-series-section {
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+  
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+  
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+  
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    .series-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+  
+      .series-image {
+        position: relative;
+        height: 200px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+  
+        .series-overlay {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+  
+          .series-count {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+          }
+        }
+      }
+  
+      .series-content {
+        padding: 2rem;
+  
+        h3 {
+          font-size: 1.5rem;
+          color: #333;
+          margin-bottom: 1rem;
+          font-weight: 600;
+        }
+  
+        p {
+          color: #666;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+  
+        .series-meta {
+          display: flex;
+          gap: 1.5rem;
+          margin-bottom: 1.5rem;
+          padding-top: 1rem;
+          border-top: 1px solid #e9ecef;
+  
+          span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+  
+            ion-icon {
+              color: #667eea;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* ===== SERMONS GRID SECTION ===== */
+  .sermons-grid-section {
+    padding: 4rem 0;
+    background: white;
+  
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+  
+      h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+  
+      p {
+        color: #666;
+        font-size: 1.05rem;
+      }
+    }
+  
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+  
+      ion-icon {
+        font-size: 5rem;
+        color: #ddd;
+        margin-bottom: 1rem;
+      }
+  
+      h3 {
+        font-size: 1.8rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        color: #999;
+        margin-bottom: 2rem;
+      }
+    }
+  
+    .sermons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+  
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    .sermon-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+  
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  
+        .thumbnail-overlay {
+          opacity: 1;
+  
+          ion-icon {
+            transform: scale(1.2);
+          }
+        }
+      }
+  
+      .sermon-thumbnail {
+        position: relative;
+        height: 200px;
+        background: #000;
+        overflow: hidden;
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+  
+        .thumbnail-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(102, 126, 234, 0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+  
+          ion-icon {
+            font-size: 4rem;
+            color: white;
+            transition: transform 0.3s ease;
+          }
+        }
+  
+        .duration-badge {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 0.3rem 0.8rem;
+          border-radius: 5px;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+  
+        .new-badge {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background: #ff4444;
+          color: white;
+          padding: 0.3rem 0.8rem;
+          border-radius: 5px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+  
+        &:hover img {
+          transform: scale(1.1);
+        }
+      }
+  
+      .sermon-content {
+        padding: 1.5rem;
+  
+        .sermon-meta {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          font-size: 0.85rem;
+  
+          .date {
+            color: #666;
+            font-weight: 600;
+          }
+  
+          .series {
+            color: #667eea;
+            font-weight: 600;
+          }
+        }
+  
+        h3 {
+          font-size: 1.3rem;
+          color: #333;
+          margin-bottom: 1rem;
+          font-weight: 600;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+  
+        .speaker {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+  
+          ion-icon {
+            color: #667eea;
+          }
+        }
+  
+        .excerpt {
+          color: #666;
+          font-size: 0.9rem;
+          line-height: 1.6;
+          margin-bottom: 1rem;
+        }
+  
+        .sermon-actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 1rem;
+          border-top: 1px solid #f0f0f0;
+  
+          ion-button {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  
+    .load-more {
+      text-align: center;
+      padding-top: 2rem;
+  
+      ion-button {
+        font-weight: 600;
+      }
+    }
+  }
+  
+  /* ===== TOPICS SECTION ===== */
+  .topics-section {
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+  
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+  
+    .topics-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+  
+    .topic-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+  
+        ion-icon,
+        .topic-count {
+          color: white;
+        }
+      }
+  
+      ion-icon {
+        font-size: 1.5rem;
+        color: #667eea;
+        transition: color 0.3s ease;
+      }
+  
+      span {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+  
+      .topic-count {
+        background: #f0f0f0;
+        color: #666;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  
+  /* ===== CTA SECTION ===== */
+  .sermons-cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+    color: white;
+  
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+  
+      ion-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+      }
+  
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.95;
+      }
+  
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+  
+        ion-button {
+          font-weight: 600;
+          --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  
+          &:hover {
+            transform: translateY(-3px);
+            --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+    }
+  }
